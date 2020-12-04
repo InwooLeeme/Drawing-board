@@ -18,8 +18,8 @@ Make a drawing board using html,css and Vanilla JavaScript.
 
 - [x] Make a canvas using html.
 - [x] Place Bush slide bar.
-- [ ] Arrange available colors for users.
-- [ ] Some styling in canvas and colors.
+- [x] Arrange available colors for users.
+- [x] Some styling in canvas and colors.
 - [ ] Add the draw function when user point inside the canvas.
 - [ ] Adds a function that stops drawing when a user hits a pointer inside a canvas.
 - [ ] Adds a function that fill the canvas when a user click the fill button.
