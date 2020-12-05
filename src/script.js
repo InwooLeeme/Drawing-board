@@ -3,8 +3,11 @@ const ctx = canvas.getContext('2d');
 const color = document.getElementsByClassName('color');
 const colorArray = Array.from(color);
 const brushRange = document.getElementById('brushRange');
+const fillBtn = document.querySelector('.fillBtn');
+const clearBtn = document.querySelector('.clearBtn');
 
 let pressed = false;
+let filled = false;
 
 canvas.width = 600;
 canvas.height = 600;
@@ -41,6 +44,7 @@ function changeBushColor(event){
     const currentColor = event.target;
     const getBackgroundColor = getComputedStyle(currentColor).backgroundColor;
     ctx.strokeStyle = getBackgroundColor;
+    ctx.fillStyle = ctx.strokeStyle;
 }
 
 function changeLineWidth(){
@@ -48,11 +52,40 @@ function changeLineWidth(){
     ctx.lineWidth = lineWidth;
 }
 
+function fillTheBoard(){
+    if(filled === true)
+    {
+        filled = false;
+        fillBtn.innerText = `Fill`;         // canvas 채우기 가능
+        
+    }
+    else{
+        filled = true;
+        fillBtn.innerText = `Paint`;        // canvas에 그리기 가능
+    }
+    //ctx.clearRect(0,0,canvas.width,canvas.height);
+    
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+}
+
+function cleaarFunction(){
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+}
+
+function clickFillCanvas(){
+    if(filled === true){
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+    }
+}
+
 if(canvas){
     canvas.addEventListener('mousemove',drawing);
     canvas.addEventListener('mousedown',mousedown);
     canvas.addEventListener('mouseup',stopDrawing);
     brushRange.addEventListener('input',changeLineWidth);
+    fillBtn.addEventListener('click',fillTheBoard);
+    clearBtn.addEventListener('click',cleaarFunction);
+    canvas.addEventListener('click',clickFillCanvas);
 }
 
 colorArray.forEach(color => {
