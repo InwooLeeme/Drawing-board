@@ -11,8 +11,9 @@ Make a drawing board using html,css and Vanilla JavaScript.
 5. Add the draw function when user point inside the canvas.
 6. Adds a function that stops drawing when a user hits a pointer inside a canvas.
 7. Adds a function that fill the canvas when a user click the fill button.
-8. Prevent a context menu.
-9. Add a save function when user click the save button.
+8. User can choose the brush color.
+9. Prevent a context menu.
+10. Add a save function when user click the save button.
 
 # Work Chect
 
@@ -22,5 +23,6 @@ Make a drawing board using html,css and Vanilla JavaScript.
 - [x] Some styling in canvas and colors.
 - [x] Add the draw function when user point inside the canvas.
 - [x] Adds a function that stops drawing when a user hits a pointer inside a canvas.
+- [x] User can choose the brush color.
 - [ ] Adds a function that fill the canvas when a user click the fill button.
 - [ ] Prevent a context menu.

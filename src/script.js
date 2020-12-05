@@ -1,5 +1,7 @@
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
+const color = document.getElementsByClassName('color');
+const colorArray = Array.from(color);
 
 let pressed = false;
 
@@ -34,9 +36,19 @@ function mousedown(event){
     document.body.style.cursor = "crosshair";
 }
 
+function changeBushColor(event){
+    const currentColor = event.target;
+    const getBackgroundColor = getComputedStyle(currentColor).backgroundColor;
+    ctx.strokeStyle = getBackgroundColor;
+}
+
 
 if(canvas){
     canvas.addEventListener('mousemove',drawing);
     canvas.addEventListener('mousedown',mousedown);
     canvas.addEventListener('mouseup',stopDrawing);
 }
+
+colorArray.forEach(color => {
+    color.addEventListener('click',changeBushColor);    
+});
