@@ -2,6 +2,7 @@ const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 const color = document.getElementsByClassName('color');
 const colorArray = Array.from(color);
+const brushRange = document.getElementById('brushRange');
 
 let pressed = false;
 
@@ -21,7 +22,7 @@ function drawing(event){
     let y = event.offsetY;
     if(!pressed){       // true
         ctx.beginPath();        // 경로 시작
-        //ctx.moveTo(x,y);        // x,y좌표로 펜을 이동
+        ctx.moveTo(x,y);        // x,y좌표로 펜을 이동
     }
     else{
         ctx.lineTo(x,y);        // x,y까지 선을 그림
@@ -42,11 +43,16 @@ function changeBushColor(event){
     ctx.strokeStyle = getBackgroundColor;
 }
 
+function changeLineWidth(){
+    const lineWidth = brushRange.value;
+    ctx.lineWidth = lineWidth;
+}
 
 if(canvas){
     canvas.addEventListener('mousemove',drawing);
     canvas.addEventListener('mousedown',mousedown);
     canvas.addEventListener('mouseup',stopDrawing);
+    brushRange.addEventListener('input',changeLineWidth);
 }
 
 colorArray.forEach(color => {
