@@ -5,6 +5,7 @@ const colorArray = Array.from(color);
 const brushRange = document.getElementById('brushRange');
 const fillBtn = document.querySelector('.fillBtn');
 const clearBtn = document.querySelector('.clearBtn');
+const saveBtn = document.querySelector('.saveBtn');
 
 let pressed = false;
 let filled = false;
@@ -64,7 +65,6 @@ function fillTheBoard(){
         fillBtn.innerText = `Paint`;        // canvas에 그리기 가능
     }
     //ctx.clearRect(0,0,canvas.width,canvas.height);
-    
     ctx.fillRect(0,0,canvas.width,canvas.height);
 }
 
@@ -78,6 +78,19 @@ function clickFillCanvas(){
     }
 }
 
+function savePicture(){
+    const imageData = canvas.toDataURL();
+    let downloadLink = document.createElement('a');
+    downloadLink.href = imageData;
+    downloadLink.download = 'Drawing Board Image.png';
+    downloadLink.click();
+}
+
+function preventContextMenu(event){
+    event.preventDefault();
+    
+}
+
 if(canvas){
     canvas.addEventListener('mousemove',drawing);
     canvas.addEventListener('mousedown',mousedown);
@@ -86,8 +99,13 @@ if(canvas){
     fillBtn.addEventListener('click',fillTheBoard);
     clearBtn.addEventListener('click',cleaarFunction);
     canvas.addEventListener('click',clickFillCanvas);
+    canvas.addEventListener('contextmenu',preventContextMenu);
 }
 
 colorArray.forEach(color => {
     color.addEventListener('click',changeBushColor);    
 });
+
+if(saveBtn){
+    saveBtn.addEventListener('click',savePicture);
+}

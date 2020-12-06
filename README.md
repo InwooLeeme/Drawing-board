@@ -27,4 +27,4 @@ Make a drawing board using html,css and Vanilla JavaScript.
 - [x] User can choose the brush color.
 - [x] User can choose the brush line width.
 - [x] Adds a function that fill the canvas when a user click the fill button.
-- [ ] Prevent a context menu.
+- [x] Prevent a context menu.
